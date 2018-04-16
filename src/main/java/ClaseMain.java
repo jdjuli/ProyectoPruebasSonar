@@ -6,6 +6,11 @@ public class ClaseMain {
 	private Vector<String> vect;
 	private Hashtable<String,Integer> tabla;
 
+	static {
+	    // Carga la biblioteca dinamica: libmyJNIlib.so
+	    System.loadLibrary("myJNIlib");
+	}
+	
 	public ClaseMain() {
 
 		vect = new Vector<String>();
@@ -16,9 +21,10 @@ public class ClaseMain {
 		
 		tabla = new Hashtable<String,Integer>();
 		tabla.put("hola", 1234);
+		
+		this.printf("Hola Mundo!!");
 	}
 
-	public static void main(String[] args) {
-		new ClaseMain();
-	}
+	private native void printf(String str);
+	
 }
